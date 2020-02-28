@@ -80,6 +80,7 @@ public class TicTacToeGameProcessor {
 	public void setWinner(int row, int col, GAME_STATE gameState) {
 		validateThreeSameStateInRow(row, gameState);
 		validateThreeSameStateInColumn(col, gameState);
+		validateForThreeSameStateInDiagonal(row, col, gameState);
 	}
 
 	/**
@@ -125,6 +126,28 @@ public class TicTacToeGameProcessor {
 
 			if (row == 2) {
 				winner = gameState;
+			}
+		}
+	}
+	
+	/**
+	 * This method finds that if diagonally (0, 0), (1, 1), (2, 2) state on board
+	 * has same sign and changes winner state to that sign like O or X
+	 * 
+	 * @param row
+	 * @param col
+	 * @param gameState
+	 */
+	private void validateForThreeSameStateInDiagonal(int row, int col, GAME_STATE gameState) {
+		if (row == col) {
+			for (int i = 0; i < board.length; i++) {
+				if (board[i][i] != gameState) {
+					break;
+				}
+
+				if (i == 2) {
+					winner = gameState;
+				}
 			}
 		}
 	}
