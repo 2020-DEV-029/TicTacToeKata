@@ -34,6 +34,18 @@ public class TicTacToeGameProcessor {
 	public boolean markCross(int row, int col) {
 		return mark(row, col, GAME_STATE.CROSS);
 	}
+	
+	/**
+	 * Mark circle in game board and change state of that square to circle and
+	 * return boolean if state changes successfully
+	 * 
+	 * @param row
+	 * @param col
+	 * @return
+	 */
+	public boolean markCircle(int row, int col) {
+		return mark(row, col, GAME_STATE.CIRCLE);
+	}
 
 	/**
 	 * Mark cross in game board and change state of that square to cross and return
@@ -72,5 +84,17 @@ public class TicTacToeGameProcessor {
 	 */
 	public boolean isCross(int row, int col) {
 		return board[row][col] == GAME_STATE.CROSS;
+	}
+	
+	/**
+	 * This method finds whether at any location on board is marked with circle or
+	 * not
+	 * 
+	 * @param row
+	 * @param col
+	 * @return boolean
+	 */
+	public boolean isCircle(int row, int col) {
+		return board[row][col] == GAME_STATE.CIRCLE;
 	}
 }
