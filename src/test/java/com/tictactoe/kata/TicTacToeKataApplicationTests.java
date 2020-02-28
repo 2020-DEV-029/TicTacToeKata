@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.tictactoe.kata.game.GAME_STATE;
 import com.tictactoe.kata.game.TicTacToeGameProcessor;
 
 /**
@@ -40,43 +41,61 @@ public class TicTacToeKataApplicationTests {
 		boolean crossPlaced = ticTacToe.markCross(2, 1);
 
 		assertEquals(false, crossPlaced);
-	}	
-	
+	}
+
 	@Test
-    public void testCircleMarking() {
+	public void testCircleMarking() {
 		ticTacToe.markCircle(0, 1);
 
-        assertEquals(true, ticTacToe.isCircle(0, 1));
-    }
-	
-	@Test
-    public void testMarkCircleOnBlank() {
-        boolean circlePlaced = ticTacToe.markCircle(1, 2);
+		assertEquals(true, ticTacToe.isCircle(0, 1));
+	}
 
-        assertEquals(true, circlePlaced);
-    }
-	
 	@Test
-    public void testMarkingCircleOverExistingMarkedCircle() {
+	public void testMarkCircleOnBlank() {
+		boolean circlePlaced = ticTacToe.markCircle(1, 2);
+
+		assertEquals(true, circlePlaced);
+	}
+
+	@Test
+	public void testMarkingCircleOverExistingMarkedCircle() {
 		ticTacToe.markCircle(2, 2);
-        boolean circlePlaced = ticTacToe.markCircle(2, 2);
+		boolean circlePlaced = ticTacToe.markCircle(2, 2);
 
-        assertEquals(false, circlePlaced);
-    }
-	
+		assertEquals(false, circlePlaced);
+	}
+
 	@Test
-    public void testMarkingCircleOverExistingMarkedCross() {
+	public void testMarkingCircleOverExistingMarkedCross() {
 		ticTacToe.markCross(2, 2);
-        boolean circlePlaced = ticTacToe.markCircle(2, 2);
+		boolean circlePlaced = ticTacToe.markCircle(2, 2);
 
-        assertEquals(false, circlePlaced);
-    }
+		assertEquals(false, circlePlaced);
+	}
+
+	@Test
+	public void testMarkingCrossOverExistingMarkedCircle() {
+		ticTacToe.markCircle(2, 1);
+		boolean crossPlaced = ticTacToe.markCross(2, 1);
+
+		assertEquals(false, crossPlaced);
+	}
+
+	@Test
+	public void testThreeCircleMarkedInARowWins() {
+		ticTacToe.markCircle(0, 0);
+		ticTacToe.markCircle(0, 1);
+		ticTacToe.markCircle(0, 2);
+		assertEquals(GAME_STATE.CIRCLE, ticTacToe.getWinner());
+		assertEquals(true, ticTacToe.isFinished());
+	}
 	
 	@Test
-    public void testMarkingCrossOverExistingMarkedCircle() {
-		ticTacToe.markCircle(2, 1);
-        boolean crossPlaced = ticTacToe.markCross(2, 1);
-
-        assertEquals(false, crossPlaced);
-    }
+	public void testThreeCrossMarkedInARowWins() {
+		ticTacToe.markCross(0, 0);
+		ticTacToe.markCross(0, 1);
+		ticTacToe.markCross(0, 2);
+		assertEquals(GAME_STATE.CROSS, ticTacToe.getWinner());
+		assertEquals(true, ticTacToe.isFinished());
+	}
 }
