@@ -41,4 +41,42 @@ public class TicTacToeKataApplicationTests {
 
 		assertEquals(false, crossPlaced);
 	}	
+	
+	@Test
+    public void testCircleMarking() {
+		ticTacToe.markCircle(0, 1);
+
+        assertEquals(true, ticTacToe.isCircle(0, 1));
+    }
+	
+	@Test
+    public void testMarkCircleOnBlank() {
+        boolean circlePlaced = ticTacToe.markCircle(1, 2);
+
+        assertEquals(true, circlePlaced);
+    }
+	
+	@Test
+    public void testMarkingCircleOverExistingMarkedCircle() {
+		ticTacToe.markCircle(2, 2);
+        boolean circlePlaced = ticTacToe.markCircle(2, 2);
+
+        assertEquals(false, circlePlaced);
+    }
+	
+	@Test
+    public void testMarkingCircleOverExistingMarkedCross() {
+		ticTacToe.markCross(2, 2);
+        boolean circlePlaced = ticTacToe.markCircle(2, 2);
+
+        assertEquals(false, circlePlaced);
+    }
+	
+	@Test
+    public void testMarkingCrossOverExistingMarkedCircle() {
+		ticTacToe.markCircle(2, 1);
+        boolean crossPlaced = ticTacToe.markCross(2, 1);
+
+        assertEquals(false, crossPlaced);
+    }
 }
