@@ -6,4 +6,4 @@ package com.tictactoe.kata.game;
  * @author AKS1405
  *
  */
-public enum GAME_STATE {BLANK, CROSS}
+public enum GAME_STATE {BLANK, CROSS, CIRCLE}
