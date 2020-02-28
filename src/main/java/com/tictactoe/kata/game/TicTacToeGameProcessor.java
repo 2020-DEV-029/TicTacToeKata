@@ -37,7 +37,6 @@ public class TicTacToeGameProcessor {
 		return mark(row, col, GAME_STATE.CROSS);
 	}
 
-
 	/**
 	 * Mark circle in game board and change state of that square to circle and
 	 * return boolean if state changes successfully
