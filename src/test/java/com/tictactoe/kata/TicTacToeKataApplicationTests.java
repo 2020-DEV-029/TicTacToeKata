@@ -116,4 +116,22 @@ public class TicTacToeKataApplicationTests {
     	assertEquals(GAME_STATE.CROSS, ticTacToe.getWinner());
         assertEquals(true, ticTacToe.isFinished());
     }
+	
+	@Test
+    public void testThreeCircleMarkedDiagonally() {
+    	ticTacToe.markCircle(0, 0);
+    	ticTacToe.markCircle(1, 1);
+    	ticTacToe.markCircle(2, 2);
+    	assertEquals(GAME_STATE.CIRCLE, ticTacToe.getWinner());
+        assertEquals(true, ticTacToe.isFinished());
+    }
+	
+	@Test
+    public void testThreeCrossMarkedDiagonally() {
+    	ticTacToe.markCross(0, 0);
+    	ticTacToe.markCross(1, 1);
+    	ticTacToe.markCross(2, 2);
+    	assertEquals(GAME_STATE.CROSS, ticTacToe.getWinner());
+        assertEquals(true, ticTacToe.isFinished());
+    }
 }
